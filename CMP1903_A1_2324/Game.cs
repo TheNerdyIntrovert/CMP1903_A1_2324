@@ -9,24 +9,23 @@ namespace CMP1903_A1_2324
     internal class Game
     {
         // Fields
-        private List<Die> _diceList;
+        private Die[] _diceList = new Die[3];
 
         // Properties
-        public List<int> LastRollsList { get; private set; }
+        public int[] LastRollsList { get; private set; }
         public int TotalSum { get; private set; }
 
         // Constructor
         public Game()
         {
             // Initialize the list of dice and the list of last rolls
-            this._diceList = new List<Die>();
-            this.LastRollsList = new List<int>();
+            this.LastRollsList = new int[3];
             this.TotalSum = 0;
 
             // Create three dice objects with default 6 sides
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < _diceList.Length; i++)
             {
-                this._diceList.Add(new Die());
+                this._diceList[i] = new Die(6);
             }
         }
 
@@ -34,14 +33,14 @@ namespace CMP1903_A1_2324
         public void RollDice()
         {
             // Clear the list of last rolls and reset total sum
-            this.LastRollsList.Clear();
             this.TotalSum = 0;
 
             // Roll each die, record the result, and calculate total sum
-            foreach (Die dieObject in this._diceList)
+            for (int i = 0; i < this._diceList.Length; i++)
             {
-                int rollResult = dieObject.Roll();
-                this.LastRollsList.Add(rollResult);
+                int rollResult = _diceList[i].Roll();
+                
+                this.LastRollsList[i] = rollResult;
                 this.TotalSum += rollResult;
             }
 
@@ -54,7 +53,7 @@ namespace CMP1903_A1_2324
         public void ReportLastRolls()
         {
             Console.WriteLine("Last rolls:");
-            for (int i = 0; i < this._diceList.Count; i++)
+            for (int i = 0; i < this._diceList.Length; i++)
             {
                 Console.WriteLine($"Die {i + 1}: {this._diceList[i].CurrentDieValue}");
             }
