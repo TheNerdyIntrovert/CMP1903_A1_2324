@@ -10,11 +10,15 @@ namespace CMP1903_A1_2324
     {
         public static void Main(string[] args)
         {
+            //Creating and playing a game from Game class
+            Game game = new Game();
+            game.RollDice();
+
             // Run tests
             Testing.RunTests();
+            Console.WriteLine("Testing completed.");
 
-            // Print testing completed message
-            Console.WriteLine("Testing completed successfully.");
+            Console.ReadLine();
         }
     }
 }

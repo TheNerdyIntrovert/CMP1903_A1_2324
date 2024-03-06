@@ -15,7 +15,9 @@ namespace CMP1903_A1_2324
         public int[] LastRollsList { get; private set; }
         public int TotalSum { get; private set; }
 
-        // Constructor
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Game"/> class.
+        /// </summary>
         public Game()
         {
             // Initialize the list of dice and the list of last rolls
@@ -29,7 +31,9 @@ namespace CMP1903_A1_2324
             }
         }
 
-        // Method to roll all dice, calculate total sum, and report results
+        /// <summary>
+        /// Rolls all dice, calculates total sum, and reports results.
+        /// </summary>
         public void RollDice()
         {
             // Clear the list of last rolls and reset total sum
@@ -39,7 +43,7 @@ namespace CMP1903_A1_2324
             for (int i = 0; i < this._diceList.Length; i++)
             {
                 int rollResult = _diceList[i].Roll();
-                
+
                 this.LastRollsList[i] = rollResult;
                 this.TotalSum += rollResult;
             }
@@ -49,17 +53,21 @@ namespace CMP1903_A1_2324
             this.ReportTotalSum();
         }
 
-        // Method to report the results of the last rolls
+        /// <summary>
+        /// Reports the results of the last rolls.
+        /// </summary>
         public void ReportLastRolls()
         {
-            Console.WriteLine("Last rolls:");
+            Console.WriteLine("Game rolls:");
             for (int i = 0; i < this._diceList.Length; i++)
             {
                 Console.WriteLine($"Die {i + 1}: {this._diceList[i].CurrentDieValue}");
             }
         }
 
-        // Method to report the total sum of the last rolls
+        /// <summary>
+        /// Reports the total sum of the last rolls.
+        /// </summary>
         public void ReportTotalSum()
         {
             Console.WriteLine($"Total of the last roll: {this.TotalSum}");
